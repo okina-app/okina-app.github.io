@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your HOLOLISA account</title>
+<meta name="description" content="How to delete your HOLOLISA account and the data it holds, in the app or on this page.">
+<!--
+  Google Play's account deletion page (#83; docs/architecture/OKINA-BACKEND.md P16). Static, English, no third-party
+  script: the page talks to OKINA's Supabase project with plain fetch() — an email code, then the delete-account
+  function, the same call the apps make. The project URL and the publishable key below are public by design (they
+  ship in both apps). For this page's origin to be allowed, the functions' ALLOWED_ORIGINS secret must list it.
+  Published at https://okina-app.github.io/delete-account.html, next to privacy.html (the link below is relative). Agents
+  do not change the okina-app/okina-app.github.io repository: the humans copy this file there and push (#1608, #1607).
+-->
+<style>
+  :root {
+    --ground: #151515; --card: #212121; --line: #2f2f2f; --ink: #f2ebe2; --ink2: #b9b2a9; --ink3: #8a847d;
+    --accent: #ff7a59; --warn: #e5a54b; --good: #8fbf7a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-weight: 500; font-size: 30px; letter-spacing: -0.01em; margin: 0 0 8px; }
+  h2 { font-weight: 500; font-size: 20px; margin: 40px 0 12px; }
+  p, li { color: var(--ink2); }
+  ol, ul { padding-left: 22px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-top: 16px; }
+  label { display: block; color: var(--ink2); font-size: 14px; margin: 12px 0 6px; }
+  input {
+    width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--ground); color: var(--ink); font-size: 16px;
+  }
+  button {
+    margin-top: 16px; padding: 12px 18px; border-radius: 999px; border: 0; font-size: 16px; cursor: pointer;
+    background: var(--ink); color: var(--ground);
+  }
+  button.danger { background: var(--accent); color: #1b0f0b; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  .note { font-size: 14px; color: var(--ink3); }
+  .status { margin-top: 14px; font-size: 15px; }
+  .status.problem { color: var(--warn); }
+  .status.done { color: var(--good); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Delete your HOLOLISA account</h1>
+  <p>HOLOLISA is an app by the HOLOLISA team. Your health record lives on your phone; your account holds only what lets
+     you sign in, an encrypted backup of that record, and a private comparison with one partner if you started one.
+     Deleting the account removes all of it from HOLOLISA's server.</p>
+
+  <h2>In the app</h2>
+  <ul>
+    <li><strong>Android:</strong> Settings → Account → <em>Delete account</em>.</li>
+    <li><strong>iPhone:</strong> Settings → Account → <em>Delete account</em>.</li>
+  </ul>
+  <p>The app also erases HOLOLISA's data on that phone, after the account is gone.</p>
+
+  <h2>Without the app</h2>
+  <p>Sign in with the email address of your HOLOLISA account. We send a code of 6 digits to it; with that code you can delete
+     the account here.</p>
+
+  <div class="card" id="step-email">
+    <label for="email">Email address</label>
+    <input id="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com">
+    <button id="send">Send me a code</button>
+    <p class="note">No account is created here: an address without a HOLOLISA account gets no code.</p>
+    <p class="status" id="email-status" role="status"></p>
+  </div>
+
+  <div class="card" id="step-code" hidden>
+    <label for="code">The code from the email, 6 digits</label>
+    <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456">
+    <button id="verify">Continue</button>
+    <p class="status" id="code-status" role="status"></p>
+  </div>
+
+  <div class="card" id="step-delete" hidden>
+    <p>Signed in as <strong id="who"></strong>. Deleting the account permanently removes, from HOLOLISA's server:</p>
+    <ul>
+      <li>the account and what lets you sign in;</li>
+      <li>your encrypted backups;</li>
+      <li>your profile photo and display name;</li>
+      <li>a private comparison you are in, with your scores, and your consent records.</li>
+    </ul>
+    <p>It cannot be undone. The HOLOLISA app on your phone keeps its own data until you delete the app or erase it in
+       Settings.</p>
+    <button class="danger" id="delete">Delete my account</button>
+    <p class="status" id="delete-status" role="status"></p>
+  </div>
+
+  <h2>What is kept, and for how long</h2>
+  <ul>
+    <li>A security log entry that the account was deleted, no longer linked to you, kept for at most 400 days.</li>
+    <li>Backup files the server could not remove at once are removed by its nightly cleanup, within 24 hours.</li>
+    <li>The email with your code stays wherever your mail provider keeps it.</li>
+  </ul>
+  <p class="note">Questions about your data: see the <a href="privacy.html" style="color: var(--ink2)">Privacy Policy</a>.</p>
+</main>
+
+<script>
+  "use strict";
+  // OKINA's production project: the same public values both apps carry.
+  const PROJECT = "https://ztojfznsnmctuksxsvgr.supabase.co";
+  const KEY = "sb_publishable_L80cnbs_eZcD-rt7ErhE-A_NZt9k6N7";
+  const $ = (id) => document.getElementById(id);
+  let email = "";
+  let token = "";
+
+  function say(id, text, kind) {
+    const el = $(id);
+    el.textContent = text;
+    el.className = "status" + (kind ? " " + kind : "");
+  }
+
+  async function call(path, body, bearer) {
+    const res = await fetch(PROJECT + path, {
+      method: "POST",
+      headers: Object.assign({ "Content-Type": "application/json", "apikey": KEY },
+                             bearer ? { "Authorization": "Bearer " + bearer } : {}),
+      body: JSON.stringify(body || {}),
+    });
+    let data = null;
+    try { data = await res.json(); } catch (_) { /* an empty answer */ }
+    return { status: res.status, data };
+  }
+
+  $("send").addEventListener("click", async () => {
+    email = $("email").value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say("email-status", "Enter the email address of your account.", "problem"); return; }
+    $("send").disabled = true;
+    say("email-status", "Sending…");
+    try {
+      // create_user: false — this page never creates an account.
+      const { status } = await call("/auth/v1/otp", { email, create_user: false });
+      if (status === 429) say("email-status", "Too many codes were asked for. Wait a little, then try again.", "problem");
+      else if (status >= 400) say("email-status", "If this address has a HOLOLISA account, a code is on its way. Check your inbox, then enter it below.");
+      else say("email-status", "A code is on its way. Check your inbox, then enter it below.");
+      $("step-code").hidden = false;
+      $("code").focus();
+    } catch (_) {
+      say("email-status", "We couldn't reach HOLOLISA. Check your connection and try again.", "problem");
+    } finally {
+      $("send").disabled = false;
+    }
+  });
+
+  $("verify").addEventListener("click", async () => {
+    const code = $("code").value.replace(/\D/g, "");
+    if (code.length !== 6) { say("code-status", "Enter the 6 digits from the email.", "problem"); return; }
+    $("verify").disabled = true;
+    say("code-status", "Checking…");
+    try {
+      const { status, data } = await call("/auth/v1/verify", { type: "email", email, token: code });
+      if (status >= 400 || !data || !data.access_token) {
+        say("code-status", "That code didn't work. Each email works once, and a new one replaces the last: use the newest.", "problem");
+        return;
+      }
+      token = data.access_token;
+      $("who").textContent = (data.user && data.user.email) || email;
+      $("step-email").hidden = true;
+      $("step-code").hidden = true;
+      $("step-delete").hidden = false;
+    } catch (_) {
+      say("code-status", "We couldn't reach HOLOLISA. Check your connection and try again.", "problem");
+    } finally {
+      $("verify").disabled = false;
+    }
+  });
+
+  $("delete").addEventListener("click", async () => {
+    if (!confirm("Delete your HOLOLISA account and everything the server holds for it? This cannot be undone.")) return;
+    $("delete").disabled = true;
+    say("delete-status", "Deleting…");
+    try {
+      const { status, data } = await call("/functions/v1/delete-account", {}, token);
+      if (status === 200 && data && data.deleted) {
+        say("delete-status", "Your account was deleted.", "done");
+        token = "";
+      } else if (status === 202) {
+        say("delete-status", "Your account is being deleted; the server finishes within 24 hours.", "done");
+        token = "";
+      } else if (status === 429) {
+        say("delete-status", "Too many attempts. Wait an hour, then try again.", "problem");
+        $("delete").disabled = false;
+      } else {
+        say("delete-status", "The account could not be deleted. Nothing was changed; try again later.", "problem");
+        $("delete").disabled = false;
+      }
+    } catch (_) {
+      say("delete-status", "We couldn't reach HOLOLISA. Nothing was changed; try again when you are online.", "problem");
+      $("delete").disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
