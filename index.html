@@ -6,23 +6,34 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EAF0FF">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#22205A">
-<title>HOLOLISA</title>
+<meta name="theme-color" content="#16172B">
+<title>HOLOLISA: your body, read as a whole</title>
 <meta name="description" content="HOLOLISA reads your sleep, heart, training, food and lab reports on your phone and tells you each morning how ready you are. Coming to iPhone and Android.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOLOLISA">
+<meta property="og:title" content="HOLOLISA: your body, read as a whole">
+<meta property="og:description" content="Sleep, heart, training, food and lab reports, read on your phone. One answer each morning, against your own usual.">
+<meta property="og:url" content="https://okina-app.github.io/">
+<meta property="og:image" content="https://okina-app.github.io/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The HOLOLISA body twin on its night stage, with sleep, heart, metabolism, hydration and muscle lit where they live.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/geist.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
 <!--
-  HOLOLISA's public landing page (#2034). Source of https://okina-app.github.io/; scripts/website/publish.sh copies
+  HOLOLISA's public landing page, v2 (#2112). Source of https://okina-app.github.io/; scripts/website/publish.sh copies
   website/ into the okina-app/okina-app.github.io checkout. Static: no script, no cookie, nothing from another origin.
-  The words follow docs/brand/VOICE.md and docs/product/INTENDED-PURPOSE.md; the screens are the store shots of #2003.
+  The words follow docs/brand/VOICE.md and docs/product/INTENDED-PURPOSE.md; the screens are the store shots of #2003;
+  the twins are the R4.1 kit's v17 renders. The charts draw the R4.1 deck's example person (Sam, 34): recovery 72 against
+  a usual of 54 to 68, HRV 93 ms against 74 to 88, resting heart rate 55, sleep 7 h 05 m. Brand only, no person (#2116).
 -->
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-head">
+<header class="site-head on-night">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="HOLOLISA, home">
       <svg viewBox="0 0 85 40" aria-hidden="true"><use href="assets/img/mark.svg#m"></use></svg>
@@ -30,8 +41,9 @@
     </a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li class="nav-what"><a href="#what">What it does</a></li>
+        <li class="wide"><a href="#twin">The twin</a></li>
         <li><a href="#privacy">Privacy</a></li>
+        <li class="wide"><a href="#faq">Questions</a></li>
         <li><a href="support.html">Support</a></li>
       </ul>
     </nav>
@@ -40,198 +52,341 @@
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
         <h1 id="hero-title">Your body, read as a whole.</h1>
-        <p class="lede">HOLOLISA reads your sleep, heart, training, food and lab reports, learns your own usual, and each morning tells you how ready you are. The work happens on your phone.</p>
+        <p class="lede">HOLOLISA reads your sleep, heart, training, food and lab reports on your phone, learns your own usual, and each morning tells you how ready you are.</p>
         <ul class="soon" aria-label="Availability">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>iPhone <span>coming soon</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Android <span>coming soon</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div>iPhone<span>Coming soon</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div>Android<span>Coming soon</span></div></li>
         </ul>
       </div>
 
-      <figure class="stage" aria-label="The body twin on an example morning: sleep rested, 7 h 05 m; heart calm, HRV 93 ms; metabolism steady; hydration thirsty, 1.2 of 2.5 litres; muscle ready, legs fresh.">
-        <div class="floor"></div>
+      <figure class="stage" aria-label="The body twin on an example morning: sleep rested, 7 h 05 m; heart calm, HRV 93 ms; metabolism steady; muscle ready, legs fresh; hydration thirsty, 1.2 of 2.5 litres, the one to watch.">
+        <div class="pool" aria-hidden="true"></div>
+        <div class="floor" aria-hidden="true"></div>
         <div class="twin">
           <img src="assets/img/twin.webp" width="280" height="722" alt="" fetchpriority="high">
           <div class="lit" aria-hidden="true">
             <span class="l-sleep k1"></span>
             <span class="l-heart k2"></span>
             <span class="l-meta k3"></span>
-            <span class="l-water warn k4"></span>
-            <span class="l-muscle k5"></span>
+            <span class="l-muscle k4"></span>
+            <span class="l-water watch k5"></span>
           </div>
         </div>
         <svg class="leaders" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
-          <g class="k1"><path d="M27 12 L50 10.3" pathLength="1"/><circle cx="50" cy="10.3" r="0.9"/></g>
-          <g class="k2"><path d="M72 30 L52.6 34.2" pathLength="1"/><circle cx="52.6" cy="34.2" r="0.9"/></g>
-          <g class="k3"><path d="M27 48.6 L48.4 53.6" pathLength="1"/><circle cx="48.4" cy="53.6" r="0.9"/></g>
-          <g class="k4"><path d="M72 49.2 L55.7 47.3" pathLength="1"/><circle cx="55.7" cy="47.3" r="0.9"/></g>
-          <g class="k5"><path d="M27 75 L44.1 77.4" pathLength="1"/><circle cx="44.1" cy="77.4" r="0.9"/></g>
+          <g class="k1"><path d="M50 10.3 L26 12" pathLength="1"/><circle cx="50" cy="10.3" r="0.9"/></g>
+          <g class="k2"><path d="M52.6 34.2 L73 30" pathLength="1"/><circle cx="52.6" cy="34.2" r="0.9"/></g>
+          <g class="k3"><path d="M48.4 53.6 L26 48.6" pathLength="1"/><circle cx="48.4" cy="53.6" r="0.9"/></g>
+          <g class="k4"><path d="M44.1 77.4 L26 75" pathLength="1"/><circle cx="44.1" cy="77.4" r="0.9"/></g>
+          <g class="k5 watch"><path d="M55.7 47.3 L73 49.2" pathLength="1"/><circle cx="55.7" cy="47.3" r="0.9"/></g>
         </svg>
         <div aria-hidden="true">
           <p class="sys sys-sleep k1"><b>Sleep</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rested</span>7 h 05 m</p>
           <p class="sys sys-heart k2"><b>Heart</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Calm</span>HRV 93 ms</p>
           <p class="sys sys-meta k3"><b>Metabolism</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Steady</span>Glucose 5.0</p>
-          <p class="sys sys-water k4"><b>Hydration</b><span class="v w"><svg viewBox="0 0 16 16"><path d="M8 1.2l7.2 13.3H.8z" fill="currentColor"/><path d="M8 6v3.8M8 12v.1" stroke="#16172B" stroke-width="1.7" stroke-linecap="round"/></svg>Thirsty</span>1.2 of 2.5 l</p>
-          <p class="sys sys-muscle k5"><b>Muscle</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready</span>Legs fresh</p>
+          <p class="sys sys-muscle k4"><b>Muscle</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready</span>Legs fresh</p>
+          <p class="sys sys-water k5"><b>Hydration</b><span class="v w"><svg viewBox="0 0 16 16"><path d="M8 1.2l7.2 13.3H.8z" fill="currentColor"/><path d="M8 6v3.8M8 12v.1" stroke="#16172B" stroke-width="1.7" stroke-linecap="round"/></svg>Thirsty</span>1.2 of 2.5 l</p>
         </div>
         <figcaption class="note">An example morning</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="section" id="what" aria-labelledby="what-title">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="what-title">What it does</h2>
-        <p>The screens show an example person's data.</p>
-      </div>
-
-      <ul class="parts">
-        <li class="part">
-          <div>
-            <h3>Today</h3>
-            <p>Each morning, one answer: how ready you are, out of 100, against your own usual. Then what moved it, from your heart rate variability, resting pulse and sleep, and a short to do for the day.</p>
-          </div>
-          <figure class="shot">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/today-dark.webp">
-              <img src="assets/img/screens/today-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Today screen: recovery 72 out of 100, Good, 10 above your usual, a 30 day chart with tomorrow's forecast, and what moved it.">
-            </picture>
+  <div class="day">
+    <section class="section" id="twin" aria-labelledby="twin-title">
+      <div class="wrap grid">
+        <div class="twin-copy copy">
+          <h2 id="twin-title">The twin is you.</h2>
+          <p class="big">A 3D body built from your height, weight and body fat. It shows where today's readings live, and the one to watch stands out.</p>
+          <ul class="facts-list">
+            <li><h3>Your shape</h3><p>Change your weight or body fat and the figure follows. It builds from a male or female body, with no recognisable face.</p></li>
+            <li><h3>Your state</h3><p>Sleep at the head, the heart at the chest, water and metabolism at the middle. Each place carries a plain word for how it is.</p></li>
+            <li><h3>Tap a reading</h3><p>Each one opens its own screen, with the numbers behind the word.</p></li>
+            <li><h3>One thing to put right</h3><p>When there is one, a plain line under the twin says it: <span class="quote">“A glass of water would help.”</span></p></li>
+          </ul>
+        </div>
+        <div class="twin-plate">
+          <figure class="bodies">
+            <div class="pair">
+              <img src="assets/img/twin-female.webp" width="232" height="724" loading="lazy" decoding="async" alt="The female body twin, from the front.">
+              <img src="assets/img/twin-turn.webp" width="244" height="724" loading="lazy" decoding="async" alt="The male body twin, turned three quarters.">
+            </div>
+            <figcaption>Two starting bodies, shaped by your numbers</figcaption>
           </figure>
-        </li>
-
-        <li class="part">
-          <div>
-            <h3>The twin</h3>
-            <p>A 3D body that shows where today's readings live: sleep at the head, the heart at the chest, water and metabolism at the middle. Each place carries a plain word for how it is, and the one to watch stands out.</p>
-          </div>
-          <figure class="shot">
+          <figure class="screen">
             <picture>
               <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/body-dark.webp">
               <img src="assets/img/screens/body-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Body screen: the twin with sleep, heart, metabolism, hydration and muscle tied to their readings.">
             </picture>
           </figure>
-        </li>
+        </div>
+      </div>
+    </section>
 
-        <li class="part">
-          <div>
-            <h3>Train</h3>
-            <p>Today's session with its sets, weights and rest timer, and a word on whether your body is ready to push. A set is logged with one tap.</p>
+    <section class="section" id="today" aria-labelledby="today-title">
+      <div class="wrap grid">
+        <div class="answer-copy copy">
+          <h2 id="today-title">One answer each morning.</h2>
+          <p class="big">How ready you are, out of 100, against your own usual. Then what moved it, and a word for the day: easy, usual or harder.</p>
+          <div class="figure">
+            <p class="n">72<small> / 100</small></p>
+            <p class="says"><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Good</b>10 above your usual</p>
           </div>
-          <div class="readout" role="img" aria-label="A rest timer between sets showing 1 minute 24 seconds, then set 3 of 4.">
-            <p class="label">Rest</p>
-            <p class="figure">1:24</p>
-            <p class="then">Then set 3 of 4, 6 reps at 80 kg</p>
-          </div>
-        </li>
+          <figure class="chart" aria-label="Recovery over 30 days, today 72, tomorrow likely 74. Your usual is 54 to 68.">
+            <div class="plot rec" aria-hidden="true">
+          <svg viewBox="0 0 680 280" aria-hidden="true" focusable="false">
+            <defs><linearGradient id="rec-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="c-area-top"/><stop offset="1" class="c-area-end"/></linearGradient></defs>
+            <rect class="c-band" x="0" y="112.8" width="608" height="61.6" rx="4"/>
+            <line class="c-band-edge" x1="0" x2="608" y1="112.8" y2="112.8"/>
+            <line class="c-band-edge" x1="0" x2="608" y1="174.4" y2="174.4"/>
+            <line class="c-grid" x1="0" x2="608" y1="244" y2="244"/>
+            <path class="after" d="M12 156.8 C14.8 154.6 23.3 147.3 29 143.6 C34.7 139.9 40.3 134.1 46 134.8 C51.7 135.5 57.3 143.6 63 148 C68.7 152.4 74.3 160.5 80 161.2 C85.7 161.9 91.3 156.1 97 152.4 C102.7 148.7 108.3 142.9 114 139.2 C119.7 135.5 125.3 133.3 131 130.4 C136.7 127.5 142.3 120.9 148 121.6 C153.7 122.3 159.3 130.4 165 134.8 C170.7 139.2 176.3 138.5 182 148 C187.7 157.5 193.3 188.3 199 192 C204.7 195.7 210.3 178.1 216 170 C221.7 161.9 227.3 150.2 233 143.6 C238.7 137 244.3 133.3 250 130.4 C255.7 127.5 261.3 124.5 267 126 C272.7 127.5 278.3 134.8 284 139.2 C289.7 143.6 295.3 153.1 301 152.4 C306.7 151.7 312.3 139.9 318 134.8 C323.7 129.7 329.3 124.5 335 121.6 C340.7 118.7 346.3 115.7 352 117.2 C357.7 118.7 363.3 121.6 369 130.4 C374.7 139.2 380.3 165.6 386 170 C391.7 174.4 397.3 162.7 403 156.8 C408.7 150.9 414.3 140.7 420 134.8 C425.7 128.9 431.3 125.3 437 121.6 C442.7 117.9 448.3 115 454 112.8 C459.7 110.6 465.3 109.9 471 108.4 C476.7 106.9 482.3 106.2 488 104 C493.7 101.8 502.2 96.7 505 95.2 L505 244 L12 244 Z" fill="url(#rec-area)"/>
+            <path class="c-line draw" pathLength="1" d="M12 156.8 C14.8 154.6 23.3 147.3 29 143.6 C34.7 139.9 40.3 134.1 46 134.8 C51.7 135.5 57.3 143.6 63 148 C68.7 152.4 74.3 160.5 80 161.2 C85.7 161.9 91.3 156.1 97 152.4 C102.7 148.7 108.3 142.9 114 139.2 C119.7 135.5 125.3 133.3 131 130.4 C136.7 127.5 142.3 120.9 148 121.6 C153.7 122.3 159.3 130.4 165 134.8 C170.7 139.2 176.3 138.5 182 148 C187.7 157.5 193.3 188.3 199 192 C204.7 195.7 210.3 178.1 216 170 C221.7 161.9 227.3 150.2 233 143.6 C238.7 137 244.3 133.3 250 130.4 C255.7 127.5 261.3 124.5 267 126 C272.7 127.5 278.3 134.8 284 139.2 C289.7 143.6 295.3 153.1 301 152.4 C306.7 151.7 312.3 139.9 318 134.8 C323.7 129.7 329.3 124.5 335 121.6 C340.7 118.7 346.3 115.7 352 117.2 C357.7 118.7 363.3 121.6 369 130.4 C374.7 139.2 380.3 165.6 386 170 C391.7 174.4 397.3 162.7 403 156.8 C408.7 150.9 414.3 140.7 420 134.8 C425.7 128.9 431.3 125.3 437 121.6 C442.7 117.9 448.3 115 454 112.8 C459.7 110.6 465.3 109.9 471 108.4 C476.7 106.9 482.3 106.2 488 104 C493.7 101.8 502.2 96.7 505 95.2"/>
+            <g class="after">
+              <path class="c-fan80" d="M505 95.2 L600 55.6 L600 117.2 Z"/>
+              <path class="c-fan50" d="M505 95.2 L600 68.8 L600 104 Z"/>
+              <line class="c-median" x1="505" y1="95.2" x2="600" y2="86.4"/>
+              <circle class="c-event" cx="199" cy="192" r="4.5"/>
+              <circle class="c-halo" cx="505" cy="95.2" r="11"/>
+              <circle class="c-now" cx="505" cy="95.2" r="5"/>
+            </g>
+          </svg>
+          <span class="lb rl-usual">Your usual 54 to 68</span>
+          <span class="lb rl-e1">Ate late</span>
+          <span class="lb rl-now now after">72</span>
+          <span class="lb rl-fan strong after">74</span>
+          <span class="lb rl-x0">24 Sep</span>
+          <span class="lb rl-x1">8 Oct</span>
+          <span class="lb rl-x2">Today</span>
+          <span class="lb rl-x3">Tomorrow</span>
+            </div>
+            <figcaption><b>Tomorrow, likely 74</b>, 70 to 78, if you are in bed by 22:30.</figcaption>
+          </figure>
+        </div>
+        <figure class="screen answer-screen">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/today-dark.webp">
+            <img src="assets/img/screens/today-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Today screen: recovery 72 out of 100, Good, 10 above your usual, a 30 day chart with tomorrow's forecast, and what moved it.">
+          </picture>
+        </figure>
+        <ul class="moved" aria-label="What moved it">
+          <li>
+            <h3>Heart rate variability</h3>
+            <p class="read">93<small>ms</small></p>
+            <svg viewBox="0 0 300 24" aria-hidden="true"><rect class="c-track" x="0" y="10" width="300" height="4" rx="2"/><rect class="c-band" x="114" y="6" width="36" height="12" rx="6"/><circle class="c-halo" cx="198" cy="12" r="10"/><circle class="c-now" cx="198" cy="12" r="5.5"/></svg>
+            <p class="vs">12 above your usual</p>
+          </li>
+          <li>
+            <h3>Resting heart rate</h3>
+            <p class="read">55<small>bpm</small></p>
+            <svg viewBox="0 0 300 24" aria-hidden="true"><rect class="c-track" x="0" y="10" width="300" height="4" rx="2"/><rect class="c-band" x="144" y="6" width="72" height="12" rx="6"/><circle class="c-halo" cx="120" cy="12" r="10"/><circle class="c-now" cx="120" cy="12" r="5.5"/></svg>
+            <p class="vs">2 below your usual</p>
+          </li>
+          <li>
+            <h3>Sleep</h3>
+            <p class="read">7<small>h</small> 05<small>m</small></p>
+            <svg viewBox="0 0 300 24" aria-hidden="true"><rect class="c-track" x="0" y="10" width="300" height="4" rx="2"/><rect class="c-band" x="125" y="6" width="63" height="12" rx="6"/><circle class="c-halo" cx="156" cy="12" r="10"/><circle class="c-now" cx="156" cy="12" r="5.5"/></svg>
+            <p class="vs">As your usual</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-        <li class="part">
-          <div>
-            <h3>Eat</h3>
-            <p>Log a meal by searching or by scanning the barcode on the packet. Protein, carbs, fat and water add up against your day as you go.</p>
+    <section class="section" id="train" aria-labelledby="train-title">
+      <div class="wrap grid">
+        <div class="tf-head">
+          <h2 id="train-title">Log a set in one tap. Log a meal by its barcode.</h2>
+        </div>
+        <div class="tf-col tf-train">
+          <div class="copy">
+            <h3>Training</h3>
+            <p>Plan your week or pick one of 27 routines. Each set shows last time beside it, and the rest timer keeps running on the lock screen.</p>
           </div>
-          <figure class="shot">
+          <figure class="set" aria-label="An example squat session: resting 1 minute 24 seconds before set 2 of 3, 100 kg for 5 reps, last time 97.5 kg for 5.">
+            <p class="head"><b>Barbell squat</b><span>Set 2 of 3</span></p>
+            <p class="rest"><span class="t">1:24</span><span>Rest before set 2</span></p>
+            <table>
+              <thead><tr><th scope="col">Set</th><th scope="col">Last time</th><th scope="col" class="r">kg</th><th scope="col" class="r">Reps</th><th scope="col" class="r"><span class="vh">Done</span></th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td class="last">97.5 × 5</td><td class="r">100</td><td class="r">5</td><td class="r"><span class="tick done"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8.4l2.6 2.6 5.4-5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="vh">Done</span></td></tr>
+                <tr class="on"><td>2</td><td class="last">97.5 × 5</td><td class="r">100</td><td class="r">5</td><td class="r"><span class="tick"></span><span class="vh">Next</span></td></tr>
+                <tr><td>3</td><td class="last">97.5 × 5</td><td class="r">100</td><td class="r">5</td><td class="r"><span class="tick"></span><span class="vh">To do</span></td></tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+        <div class="tf-col tf-eat">
+          <div class="copy">
+            <h3>Food</h3>
+            <p>Search, or scan a barcode or a label. Your calories and macros come from your goal and a pace you choose, and add up against your day as you go.</p>
+          </div>
+          <figure class="screen">
             <picture>
               <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/eat-dark.webp">
               <img src="assets/img/screens/eat-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Eat screen: what is left for the day, with protein, carbs and fat, and the meals logged so far.">
             </picture>
           </figure>
-        </li>
-
-        <li class="part">
-          <div>
-            <h3>Body and labs</h3>
-            <p>Weight, body fat and the measurements you add, charted over time. Add a lab report from a photo: it is read on the phone, and each value is shown as your laboratory printed it, against that laboratory's own range.</p>
-            <p class="fine">The photo is never stored or uploaded.</p>
-          </div>
-          <div class="readout" role="img" aria-label="An example lab value, vitamin D 74 nmol per litre, inside the lab's range of 50 to 125, up from two earlier reports.">
-            <p class="label">Vitamin D</p>
-            <p class="value">74<small>nmol/l</small></p>
-            <div class="range"><span class="track"></span><span class="band"></span><span class="was w1"></span><span class="was w2"></span><span class="now"></span></div>
-            <p class="range-scale"><span>Lab range 50</span><span>125</span></p>
-            <p class="then">Rings are your earlier reports</p>
-          </div>
-        </li>
-
-        <li class="part">
-          <div>
-            <h3>Insights and HOLOLISA Age</h3>
-            <p>Your own normal for each signal, recovery over ninety days and the habits that went with it.</p>
-            <p>HOLOLISA Age is a research estimate from nine markers on one blood test, using a published equation. It appears only when a report holds all nine, and HOLOLISA never guesses a missing one.</p>
-          </div>
-          <figure class="shot">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/age-dark.webp">
-              <img src="assets/img/screens/age-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The HOLOLISA Age screen: a research estimate beside calendar age, with how it moved between reports.">
-            </picture>
-          </figure>
-        </li>
-
-        <li class="part">
-          <div>
-            <h3>Patterns</h3>
-            <p>What tends to go with your better nights and mornings, found in your own data. For example, how your heart rate variability differs after the nights you were in bed by 22:45.</p>
-          </div>
-          <figure class="shot">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/hrv-dark.webp">
-              <img src="assets/img/screens/hrv-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The heart rate variability screen: 93 ms, above your usual, eight weeks of readings, and a pattern linking bedtime to the next morning.">
-            </picture>
-          </figure>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section privacy" id="privacy" aria-labelledby="privacy-title">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="privacy-title">Your health data stays on your phone.</h2>
+        </div>
       </div>
-      <ul class="facts">
+    </section>
+
+    <section class="section" id="labs" aria-labelledby="labs-title">
+      <div class="wrap grid">
+        <figure class="screen labs-screen">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/age-dark.webp">
+            <img src="assets/img/screens/age-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="HOLOLISA Age on the Body screen: 26 years, younger than a calendar age of 34, give or take 4 years, above the findings from the last 60 days.">
+          </picture>
+        </figure>
+        <div class="labs-copy copy">
+          <h2 id="labs-title">Your lab reports, read on your phone.</h2>
+          <p class="big">Photograph a report or load a PDF. Each value is shown as your lab printed it, against your lab's own range, and charted across every report you add.</p>
+          <p class="fine">The photo is never stored or uploaded.</p>
+        </div>
+        <div class="labs-viz">
+          <figure class="marker chart" aria-label="An example lab value: vitamin D 74 nmol per litre, inside the lab's range of 50 to 125, up from two earlier reports.">
+            <p class="head"><b>Vitamin D</b><span>Inside your lab's range</span></p>
+            <p class="read">74<small>nmol/l</small></p>
+            <svg viewBox="0 0 400 28" aria-hidden="true"><rect class="c-track" x="0" y="12" width="400" height="4" rx="2"/><rect class="c-ref" x="80" y="7" width="240" height="14" rx="7"/><circle class="c-was rise" cx="96" cy="14" r="6"/><circle class="c-was rise" cx="131" cy="14" r="6"/><circle class="c-halo after" cx="157" cy="14" r="11"/><circle class="c-now after" cx="157" cy="14" r="6.5"/></svg>
+            <figcaption>Lab range 50 to 125. The rings are your two earlier reports.</figcaption>
+          </figure>
+          <div class="age-line">
+            <h3>HOLOLISA Age</h3>
+            <p>A research estimate from nine markers on one blood test, using the published PhenoAge equation. It appears only when a report holds all nine, and HOLOLISA never guesses a missing one. It is not a medical test.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="patterns" aria-labelledby="patterns-title">
+      <div class="wrap grid">
+        <div class="pat-copy copy">
+          <h2 id="patterns-title">What moves your recovery.</h2>
+          <p class="big">HOLOLISA looks through your own weeks for what goes with your better mornings. Here, heart rate variability the morning after nights in bed by 22:45, against later nights.</p>
+        </div>
+        <figure class="chart pat-chart" aria-label="An example of eight weeks: heart rate variability averaged 92 ms after the nights in bed by 22:45, and 78 ms after later nights. The usual is 79 to 85.">
+          <div class="plot pat" aria-hidden="true">
+          <svg viewBox="0 0 600 220" aria-hidden="true" focusable="false">
+            <rect class="c-band" x="229.9" y="20" width="70.1" height="182" rx="4"/>
+            <line class="c-grid" x1="0" x2="600" y1="202" y2="202"/>
+            <g class="rise"><circle class="c-dot" cx="288.3" cy="68" r="4"/><circle class="c-dot" cx="300" cy="68" r="4"/><circle class="c-dot" cx="335" cy="68" r="4"/><circle class="c-dot" cx="335" cy="59" r="4"/><circle class="c-dot" cx="335" cy="77" r="4"/><circle class="c-dot" cx="335" cy="50" r="4"/><circle class="c-dot" cx="346.7" cy="68" r="4"/><circle class="c-dot" cx="346.7" cy="59" r="4"/><circle class="c-dot" cx="358.4" cy="68" r="4"/><circle class="c-dot" cx="370.1" cy="68" r="4"/><circle class="c-dot" cx="370.1" cy="59" r="4"/><circle class="c-dot" cx="370.1" cy="77" r="4"/><circle class="c-dot" cx="381.8" cy="68" r="4"/><circle class="c-dot" cx="405.1" cy="68" r="4"/><circle class="c-dot" cx="416.8" cy="68" r="4"/><circle class="c-dot" cx="428.5" cy="68" r="4"/><circle class="c-dot" cx="440.2" cy="68" r="4"/><circle class="c-dot" cx="440.2" cy="59" r="4"/><circle class="c-dot" cx="440.2" cy="77" r="4"/><circle class="c-dot" cx="451.8" cy="68" r="4"/><circle class="c-dot" cx="463.5" cy="68" r="4"/></g>
+            <g class="rise"><circle class="c-dim" cx="8" cy="158" r="4"/><circle class="c-dim" cx="31.4" cy="158" r="4"/><circle class="c-dim" cx="78.1" cy="158" r="4"/><circle class="c-dim" cx="78.1" cy="149" r="4"/><circle class="c-dim" cx="89.8" cy="158" r="4"/><circle class="c-dim" cx="136.5" cy="158" r="4"/><circle class="c-dim" cx="136.5" cy="149" r="4"/><circle class="c-dim" cx="148.2" cy="158" r="4"/><circle class="c-dim" cx="159.8" cy="158" r="4"/><circle class="c-dim" cx="171.5" cy="158" r="4"/><circle class="c-dim" cx="183.2" cy="158" r="4"/><circle class="c-dim" cx="194.9" cy="158" r="4"/><circle class="c-dim" cx="206.6" cy="158" r="4"/><circle class="c-dim" cx="218.2" cy="158" r="4"/><circle class="c-dim" cx="218.2" cy="149" r="4"/><circle class="c-dim" cx="218.2" cy="167" r="4"/><circle class="c-dim" cx="229.9" cy="158" r="4"/><circle class="c-dim" cx="229.9" cy="149" r="4"/><circle class="c-dim" cx="241.6" cy="158" r="4"/><circle class="c-dim" cx="253.3" cy="158" r="4"/><circle class="c-dim" cx="253.3" cy="149" r="4"/><circle class="c-dim" cx="253.3" cy="167" r="4"/><circle class="c-dim" cx="265" cy="158" r="4"/><circle class="c-dim" cx="276.6" cy="158" r="4"/><circle class="c-dim" cx="288.3" cy="158" r="4"/><circle class="c-dim" cx="300" cy="158" r="4"/><circle class="c-dim" cx="300" cy="149" r="4"/><circle class="c-dim" cx="300" cy="167" r="4"/><circle class="c-dim" cx="311.7" cy="158" r="4"/><circle class="c-dim" cx="311.7" cy="149" r="4"/><circle class="c-dim" cx="311.7" cy="167" r="4"/><circle class="c-dim" cx="323.4" cy="158" r="4"/><circle class="c-dim" cx="346.7" cy="158" r="4"/><circle class="c-dim" cx="346.7" cy="149" r="4"/><circle class="c-dim" cx="358.4" cy="158" r="4"/></g>
+            <line class="c-median after" x1="379" x2="379" y1="34" y2="102"/>
+            <line class="c-median after" x1="222.2" x2="222.2" y1="124" y2="192"/>
+          </svg>
+          <span class="lb pl-r1 strong">In bed by 22:45</span>
+          <span class="lb pl-r2 strong">Later nights</span>
+          <span class="lb pl-m1 strong after">92 ms</span>
+          <span class="lb pl-m2 after">78 ms</span>
+          <span class="lb pl-x0">60 ms</span>
+          <span class="lb pl-x1">80</span>
+          <span class="lb pl-x2">100 ms</span>
+            </div>
+          <figcaption>Eight weeks of an example person. The band is your usual, 79 to 85 ms. A pattern says what went together in your data, not what caused it.</figcaption>
+        </figure>
+        <figure class="screen pat-screen">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/hrv-dark.webp">
+            <img src="assets/img/screens/hrv-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The heart rate variability screen: 93 ms, above your usual, eight weeks of readings, and a pattern linking bedtime to the next morning.">
+          </picture>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="night-band" id="privacy" aria-labelledby="privacy-title">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 id="privacy-title">Your health data stays on your phone.</h2>
+        <p class="lede">HOLOLISA reads Apple Health or Health Connect only with your permission, and does its work on the phone.</p>
+      </div>
+      <ul class="pillars">
         <li>
-          <h3>Worked out on the phone</h3>
-          <p>HOLOLISA reads Apple Health or Health Connect only with your permission, and does its work on the phone. No health reading, lab value or journal entry is sent anywhere in readable form.</p>
+          <p class="where">Worked out on the phone</p>
+          <p>No health reading, lab value or journal entry is sent anywhere in readable form. An account is optional.</p>
         </li>
         <li>
-          <h3>Backup only if you turn it on</h3>
-          <p>Cloud backup is off until you say yes. Then your record is encrypted on the phone before it is uploaded, and kept in Frankfurt, in the EU, so a new phone can restore it.</p>
-          <p class="fine">HOLOLISA's server keeps the key, so that signing in is enough to restore. The policy explains how.</p>
+          <p class="where">Backed up only if you say yes</p>
+          <p>Cloud backup is off until you turn it on. Then your record is encrypted on the phone before it is uploaded, and kept in Frankfurt, in the EU, so a new phone can restore it.</p>
+          <p class="fine">Our server keeps the key, so that signing in is enough to restore. The policy explains how.</p>
         </li>
         <li>
-          <h3>No ads, no tracking</h3>
+          <p class="where">No ads, no tracking</p>
           <p>No advertising, no analytics of our own, no tracking SDKs and no advertising ID. This site sets no cookies and loads nothing from anyone else.</p>
-          <p class="fine">On Android, Google's ML Kit, the code behind the scanners, sends its own diagnostics. The policy lists them.</p>
+          <p class="fine">On Android, the code behind the scanners sends its own diagnostics. The policy lists them.</p>
         </li>
       </ul>
-      <p><a href="privacy.html">Read the privacy policy</a></p>
+      <p class="more"><a href="privacy.html">Read the privacy policy</a></p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="not-title">
-    <div class="wrap"><div class="plain">
-      <h2 id="not-title">What HOLOLISA is for</h2>
-      <p>HOLOLISA is for general wellness, for people 16 and over. It does not diagnose anything and does not replace a doctor. A band on a chart is your own usual, a lab value sits against the range your lab printed, and HOLOLISA Age is a research estimate. If you feel unwell, talk to a doctor.</p>
-      <p>HOLOLISA is in early testing.</p>
-      <ul class="soon" aria-label="Availability">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>iPhone <span>coming soon</span></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Android <span>coming soon</span></li>
-      </ul>
-    </div></div>
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap grid">
+      <div class="faq-head copy">
+        <h2 id="faq-title">Questions</h2>
+        <p>Anything else, write to us from the <a href="support.html">support page</a>.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>What is HOLOLISA?</summary>
+          <div class="a"><p>A wellness app for iPhone and Android. It reads what your phone and watch already measure, adds your training, food and lab reports, and shows how you are doing against your own usual, with one answer each morning.</p></div>
+        </details>
+        <details>
+          <summary>Is it medical advice?</summary>
+          <div class="a"><p>No. HOLOLISA is for general wellness. It does not diagnose anything and does not replace a doctor. A band on a chart is your own usual, a lab value sits against the range your lab printed, and HOLOLISA Age is a research estimate. If you feel unwell, talk to a doctor.</p></div>
+        </details>
+        <details>
+          <summary>Where is my data?</summary>
+          <div class="a"><p>On your phone. Cloud backup is off until you turn it on, and then your record is encrypted before it leaves the phone. The <a href="privacy.html">privacy policy</a> lists everything that leaves the phone.</p></div>
+        </details>
+        <details>
+          <summary>Which phones and watches work?</summary>
+          <div class="a"><p>An iPhone with iOS 17 or later, or an Android phone with Android 10 or later and Health Connect. A watch, ring or scale works when it writes to Apple Health or Health Connect. HOLOLISA has no watch app of its own.</p></div>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <div class="a"><p>Nothing is sold in the app while HOLOLISA is in testing. The price for the release is not set yet.</p></div>
+        </details>
+        <details>
+          <summary>Who is it for?</summary>
+          <div class="a"><p>People 16 and over who want one clear answer each morning, and the detail behind it when they ask for it.</p></div>
+        </details>
+        <details>
+          <summary>When can I get it?</summary>
+          <div class="a"><p>HOLOLISA is in early testing. It is coming to iPhone and Android.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" aria-labelledby="close-title">
+    <div class="wrap">
+      <div class="close-inner">
+        <h2 id="close-title">Coming to iPhone and Android.</h2>
+        <ul class="soon" aria-label="Availability">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div>iPhone<span>Coming soon</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div>Android<span>Coming soon</span></div></li>
+        </ul>
+        <p class="wellness">HOLOLISA is for general wellness, for people 16 and over. It does not diagnose anything and does not replace a doctor.</p>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer class="site-foot">
-  <div class="wrap">
-    <p>HOLOLISA · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+  <div class="wrap foot-grid">
+    <a class="brand" href="index.html" aria-label="HOLOLISA, home">
+      <svg viewBox="0 0 85 40" aria-hidden="true"><use href="assets/img/mark.svg#m"></use></svg>
+      <span>HOLOLISA</span>
+    </a>
     <nav aria-label="Legal and help">
       <ul>
+        <li><a href="support.html">Support</a></li>
         <li><a href="privacy.html">Privacy policy</a></li>
         <li><a href="terms.html">Terms of use</a></li>
         <li><a href="delete-account.html">Delete your account</a></li>
-        <li><a href="support.html">Support</a></li>
       </ul>
     </nav>
   </div>

@@ -1,6 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HOLOLISA · Privacy</title><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HOLOLISA privacy policy</title>
+<meta name="description" content="What HOLOLISA keeps on your phone, what leaves it and why, and your rights over your data."><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EAF0FF">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#22205A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HOLOLISA">
+<meta property="og:title" content="HOLOLISA privacy policy">
+<meta property="og:description" content="What HOLOLISA keeps on your phone, what leaves it and why, and your rights over your data.">
+<meta property="og:url" content="https://okina-app.github.io/privacy.html">
+<meta property="og:image" content="https://okina-app.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/geist.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css"></head>
@@ -12,7 +22,7 @@
 -->
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-head">
+<header class="site-head on-sky">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="HOLOLISA, home">
       <svg viewBox="0 0 85 40" aria-hidden="true"><use href="assets/img/mark.svg#m"></use></svg>
@@ -20,24 +30,27 @@
     </a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        <li class="nav-what"><a href="index.html#what">What it does</a></li>
+        <li class="wide"><a href="index.html#twin">The twin</a></li>
         <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+        <li class="wide"><a href="index.html#faq">Questions</a></li>
         <li><a href="support.html">Support</a></li>
       </ul>
     </nav>
   </div>
 </header>
-<main id="main" class="doc wrap"><div class="doc-body">
+<main id="main" class="doc"><div class="wrap doc-grid has-toc">
+<aside class="toc"><nav aria-label="On this page"><p>On this page</p><ol><li><a href="#who-we-are">Who we are</a></li><li><a href="#your-health-data-stays-on-your-phone">Your health data stays on your phone</a></li><li><a href="#what-leaves-the-phone">What leaves the phone</a></li><li><a href="#what-hololisa-does-not-do">What HOLOLISA does not do</a></li><li><a href="#legal-basis">Legal basis</a></li><li><a href="#retention-and-deletion">Retention and deletion</a></li><li><a href="#processors">Processors</a></li><li><a href="#your-rights">Your rights</a></li></ol></nav></aside>
+<div class="doc-body">
 <h1>Privacy policy</h1>
 <p>Last updated: 23 October 2026. HOLOLISA is in early testing; this policy describes how the app works today and will be updated before public release.</p>
 
-<h2>Who we are</h2>
+<h2 id="who-we-are">Who we are</h2>
 <p>HOLOLISA is in early testing and has no company yet. The controller of your data is the person who runs HOLOLISA, Kaiser Jonatan. Contact: <a href="mailto:kaiserjonatan911@gmail.com">kaiserjonatan911@gmail.com</a>.</p>
 
-<h2>Your health data stays on your phone</h2>
+<h2 id="your-health-data-stays-on-your-phone">Your health data stays on your phone</h2>
 <p>HOLOLISA reads health data (for example sleep, steps, heart rate, heart rate variability, weight, nutrition and workouts) from Health Connect on Android or Apple Health on iPhone, only with your permission. It analyses that data on your phone. No health reading, lab value or journal entry is sent anywhere in readable form. The one way your record leaves the phone is the cloud backup, which is off until you turn it on (see below).</p>
 
-<h2>What leaves the phone</h2>
+<h2 id="what-leaves-the-phone">What leaves the phone</h2>
 <div class="table-scroll"><table>
 <tr><th>What</th><th>Where</th><th>Why</th></tr>
 <tr><td>Your email address, or the identity you sign in with (Google or Apple)</td><td>Supabase (authentication)</td><td>To create and sign in to your account</td></tr>
@@ -55,38 +68,41 @@
 <p>The private comparison is by invite and between two people. The invite code and the pairing hold no personal data, and an invite nobody uses is deleted after 24 hours. The comparison items above are shown to your one active partner and to nobody else. Scores older than 90 days are deleted every night. When you stop sharing, the comparison ends, both people's scores are deleted, and your display name and photo are removed.</p>
 <p>Exercise pictures are downloaded from a public image library. A food lookup and a picture download each reach that service the way any web request does, so it sees your phone's IP address. Nothing else about you is sent: no account, no name and no health data.</p>
 
-<h2>What HOLOLISA does not do</h2>
+<h2 id="what-hololisa-does-not-do">What HOLOLISA does not do</h2>
 <ul>
 <li>No advertising, no analytics of our own and no tracking SDKs, and no advertising ID. The only diagnostics are the ones Google's ML Kit sends on Android, listed above.</li>
 <li>Photos of lab reports and nutrition labels are read on the phone and are never stored or uploaded. Identifiers on them (name, date of birth, address, phone, email, social security number) are removed before anything is read.</li>
 <li>Your data is not sold or shared with third parties for their own purposes.</li>
 </ul>
 
-<h2>Legal basis</h2>
+<h2 id="legal-basis">Legal basis</h2>
 <p>Signing in does not ask for your consent to anything. Health data is processed with your explicit consent (GDPR Article 9(2)(a)) when you turn on cloud backup. The app asks once, after your first sign in on a phone ("Turn on cloud backup?"), and you can change your mind in Settings at any time. Without that consent nothing is uploaded and everything stays on your phone.</p>
 <p>The private comparison has its own question, asked before you create or join one. Your display name, photo, daily scores and streak are shared on your consent (GDPR Article 6(1)(a)).</p>
 <p>You can withdraw either consent at any time in Settings. Turning off cloud backup deletes your backups. Stopping the comparison deletes its scores and removes your name and photo. You can also delete your account.</p>
 
-<h2>Retention and deletion</h2>
+<h2 id="retention-and-deletion">Retention and deletion</h2>
 <p>The cloud keeps your latest backups. When you delete your account in the app, your account and backups are normally deleted straight away. If a step fails, HOLOLISA's server finishes the job, and it is always complete within 24 hours. Until it is finished the server also holds a record of the deletion job. Data on your phone is removed when you reset the app or uninstall it.</p>
 <p>The server keeps a short log of its own events, for example that an account was deleted, for 400 days. Once your account is deleted, the log has no link to it and holds no personal data.</p>
 
-<h2>Processors</h2>
+<h2 id="processors">Processors</h2>
 <p>Supabase (hosting, authentication and storage, EU region); Google and Apple, only if you choose to sign in with them; Google, for the ML Kit diagnostics on Android.</p>
 
-<h2>Your rights</h2>
+<h2 id="your-rights">Your rights</h2>
 <p>You can ask for access to, correction of, or deletion of your data, and you can lodge a complaint with your data protection authority (in Hungary: NAIH). Write to the contact address above.</p>
 
-</div></main>
+</div></div></main>
 <footer class="site-foot">
-  <div class="wrap">
-    <p>HOLOLISA · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+  <div class="wrap foot-grid">
+    <a class="brand" href="index.html" aria-label="HOLOLISA, home">
+      <svg viewBox="0 0 85 40" aria-hidden="true"><use href="assets/img/mark.svg#m"></use></svg>
+      <span>HOLOLISA</span>
+    </a>
     <nav aria-label="Legal and help">
       <ul>
+        <li><a href="support.html">Support</a></li>
         <li><a href="privacy.html">Privacy policy</a></li>
         <li><a href="terms.html">Terms of use</a></li>
         <li><a href="delete-account.html">Delete your account</a></li>
-        <li><a href="support.html">Support</a></li>
       </ul>
     </nav>
   </div>
