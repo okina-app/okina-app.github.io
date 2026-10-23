@@ -10,45 +10,35 @@
   script: the page talks to OKINA's Supabase project with plain fetch() — an email code, then the delete-account
   function, the same call the apps make. The project URL and the publishable key below are public by design (they
   ship in both apps). For this page's origin to be allowed, the functions' ALLOWED_ORIGINS secret must list it.
-  Published at https://okina-app.github.io/delete-account.html, next to privacy.html (the link below is relative). Agents
-  do not change the okina-app/okina-app.github.io repository: the humans copy this file there and push (#1608, #1607).
+  Published at https://okina-app.github.io/delete-account.html, next to privacy.html (the link below is relative). It
+  lives in website/ with the rest of the public site (#2034); scripts/website/publish.sh copies it there (#1608, #1607).
+  The page's Content-Security-Policy allows its own inline script and fetch() to that one project, nothing else.
 -->
-<style>
-  :root {
-    --ground: #151515; --card: #212121; --line: #2f2f2f; --ink: #f2ebe2; --ink2: #b9b2a9; --ink3: #8a847d;
-    --accent: #ff7a59; --warn: #e5a54b; --good: #8fbf7a;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--ground); color: var(--ink);
-    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 48px 16px 64px; }
-  h1 { font-weight: 500; font-size: 30px; letter-spacing: -0.01em; margin: 0 0 8px; }
-  h2 { font-weight: 500; font-size: 20px; margin: 40px 0 12px; }
-  p, li { color: var(--ink2); }
-  ol, ul { padding-left: 22px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-top: 16px; }
-  label { display: block; color: var(--ink2); font-size: 14px; margin: 12px 0 6px; }
-  input {
-    width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line);
-    background: var(--ground); color: var(--ink); font-size: 16px;
-  }
-  button {
-    margin-top: 16px; padding: 12px 18px; border-radius: 999px; border: 0; font-size: 16px; cursor: pointer;
-    background: var(--ink); color: var(--ground);
-  }
-  button.danger { background: var(--accent); color: #1b0f0b; }
-  button:disabled { opacity: 0.5; cursor: default; }
-  .note { font-size: 14px; color: var(--ink3); }
-  .status { margin-top: 14px; font-size: 15px; }
-  .status.problem { color: var(--warn); }
-  .status.done { color: var(--good); }
-  [hidden] { display: none !important; }
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src https://ztojfznsnmctuksxsvgr.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/geist.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-<main>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="HOLOLISA, home">
+      <svg viewBox="0 0 85 40" aria-hidden="true"><use href="assets/img/mark.svg#m"></use></svg>
+      <span>HOLOLISA</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li class="nav-what"><a href="index.html#what">What it does</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc wrap"><div class="doc-body">
   <h1>Delete your HOLOLISA account</h1>
   <p>HOLOLISA is an app by the HOLOLISA team. Your health record lives on your phone; your account holds only what lets
      you sign in, an encrypted backup of that record, and a private comparison with one partner if you started one.
@@ -100,8 +90,21 @@
     <li>Backup files the server could not remove at once are removed by its nightly cleanup, within 24 hours.</li>
     <li>The email with your code stays wherever your mail provider keeps it.</li>
   </ul>
-  <p class="note">Questions about your data: see the <a href="privacy.html" style="color: var(--ink2)">Privacy Policy</a>.</p>
-</main>
+  <p class="note">Questions about your data: see the <a href="privacy.html">Privacy Policy</a>.</p>
+</div></main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p>HOLOLISA is developed by Kaiser Jonatan. Contact: <a href="mailto:kaiserjonatan911@gmail.com">kaiserjonatan911@gmail.com</a>.</p>
+    <nav aria-label="Legal and help">
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of use</a></li>
+        <li><a href="delete-account.html">Delete your account</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
 
 <script>
   "use strict";

@@ -1,8 +1,240 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OKINA</title><link rel="stylesheet" href="style.css"></head>
-<body><main>
-<h1>OKINA</h1>
-<p>OKINA brings your sleep, recovery, training, nutrition and lab results into one place, and reads each of them against your own earlier days rather than a population average.</p>
-<p>It is in early testing on Android and iPhone.</p>
-<p><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of use</a></p>
-<footer>Contact: <a href="mailto:kaiserjonatan911@gmail.com">kaiserjonatan911@gmail.com</a></footer>
-</main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EAF0FF">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#22205A">
+<title>HOLOLISA</title>
+<meta name="description" content="HOLOLISA reads your sleep, heart, training, food and lab reports on your phone and tells you each morning how ready you are. Coming to iPhone and Android.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/geist.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<!--
+  HOLOLISA's public landing page (#2034). Source of https://okina-app.github.io/; scripts/website/publish.sh copies
+  website/ into the okina-app/okina-app.github.io checkout. Static: no script, no cookie, nothing from another origin.
+  The words follow docs/brand/VOICE.md and docs/product/INTENDED-PURPOSE.md; the screens are the store shots of #2003.
+-->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="HOLOLISA, home">
+      <svg viewBox="0 0 85 40" aria-hidden="true"><use href="assets/img/mark.svg#m"></use></svg>
+      <span>HOLOLISA</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li class="nav-what"><a href="#what">What it does</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-title">Your body, read as a whole.</h1>
+        <p class="lede">HOLOLISA reads your sleep, heart, training, food and lab reports, learns your own usual, and each morning tells you how ready you are. The work happens on your phone.</p>
+        <ul class="soon" aria-label="Availability">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>iPhone <span>coming soon</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Android <span>coming soon</span></li>
+        </ul>
+      </div>
+
+      <figure class="stage" aria-label="The body twin on an example morning: sleep rested, 7 h 05 m; heart calm, HRV 93 ms; metabolism steady; hydration thirsty, 1.2 of 2.5 litres; muscle ready, legs fresh.">
+        <div class="floor"></div>
+        <div class="twin">
+          <img src="assets/img/twin.webp" width="280" height="722" alt="" fetchpriority="high">
+          <div class="lit" aria-hidden="true">
+            <span class="l-sleep k1"></span>
+            <span class="l-heart k2"></span>
+            <span class="l-meta k3"></span>
+            <span class="l-water warn k4"></span>
+            <span class="l-muscle k5"></span>
+          </div>
+        </div>
+        <svg class="leaders" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
+          <g class="k1"><path d="M27 12 L50 10.3" pathLength="1"/><circle cx="50" cy="10.3" r="0.9"/></g>
+          <g class="k2"><path d="M72 30 L52.6 34.2" pathLength="1"/><circle cx="52.6" cy="34.2" r="0.9"/></g>
+          <g class="k3"><path d="M27 48.6 L48.4 53.6" pathLength="1"/><circle cx="48.4" cy="53.6" r="0.9"/></g>
+          <g class="k4"><path d="M72 49.2 L55.7 47.3" pathLength="1"/><circle cx="55.7" cy="47.3" r="0.9"/></g>
+          <g class="k5"><path d="M27 75 L44.1 77.4" pathLength="1"/><circle cx="44.1" cy="77.4" r="0.9"/></g>
+        </svg>
+        <div aria-hidden="true">
+          <p class="sys sys-sleep k1"><b>Sleep</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rested</span>7 h 05 m</p>
+          <p class="sys sys-heart k2"><b>Heart</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Calm</span>HRV 93 ms</p>
+          <p class="sys sys-meta k3"><b>Metabolism</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Steady</span>Glucose 5.0</p>
+          <p class="sys sys-water k4"><b>Hydration</b><span class="v w"><svg viewBox="0 0 16 16"><path d="M8 1.2l7.2 13.3H.8z" fill="currentColor"/><path d="M8 6v3.8M8 12v.1" stroke="#16172B" stroke-width="1.7" stroke-linecap="round"/></svg>Thirsty</span>1.2 of 2.5 l</p>
+          <p class="sys sys-muscle k5"><b>Muscle</b><span class="v"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#16172B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready</span>Legs fresh</p>
+        </div>
+        <figcaption class="note">An example morning</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="what" aria-labelledby="what-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="what-title">What it does</h2>
+        <p>The screens show an example person's data.</p>
+      </div>
+
+      <ul class="parts">
+        <li class="part">
+          <div>
+            <h3>Today</h3>
+            <p>Each morning, one answer: how ready you are, out of 100, against your own usual. Then what moved it, from your heart rate variability, resting pulse and sleep, and a short to do for the day.</p>
+          </div>
+          <figure class="shot">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/today-dark.webp">
+              <img src="assets/img/screens/today-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Today screen: recovery 72 out of 100, Good, 10 above your usual, a 30 day chart with tomorrow's forecast, and what moved it.">
+            </picture>
+          </figure>
+        </li>
+
+        <li class="part">
+          <div>
+            <h3>The twin</h3>
+            <p>A 3D body that shows where today's readings live: sleep at the head, the heart at the chest, water and metabolism at the middle. Each place carries a plain word for how it is, and the one to watch stands out.</p>
+          </div>
+          <figure class="shot">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/body-dark.webp">
+              <img src="assets/img/screens/body-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Body screen: the twin with sleep, heart, metabolism, hydration and muscle tied to their readings.">
+            </picture>
+          </figure>
+        </li>
+
+        <li class="part">
+          <div>
+            <h3>Train</h3>
+            <p>Today's session with its sets, weights and rest timer, and a word on whether your body is ready to push. A set is logged with one tap.</p>
+          </div>
+          <div class="readout" role="img" aria-label="A rest timer between sets showing 1 minute 24 seconds, then set 3 of 4.">
+            <p class="label">Rest</p>
+            <p class="figure">1:24</p>
+            <p class="then">Then set 3 of 4, 6 reps at 80 kg</p>
+          </div>
+        </li>
+
+        <li class="part">
+          <div>
+            <h3>Eat</h3>
+            <p>Log a meal by searching or by scanning the barcode on the packet. Protein, carbs, fat and water add up against your day as you go.</p>
+          </div>
+          <figure class="shot">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/eat-dark.webp">
+              <img src="assets/img/screens/eat-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The Eat screen: what is left for the day, with protein, carbs and fat, and the meals logged so far.">
+            </picture>
+          </figure>
+        </li>
+
+        <li class="part">
+          <div>
+            <h3>Body and labs</h3>
+            <p>Weight, body fat and the measurements you add, charted over time. Add a lab report from a photo: it is read on the phone, and each value is shown as your laboratory printed it, against that laboratory's own range.</p>
+            <p class="fine">The photo is never stored or uploaded.</p>
+          </div>
+          <div class="readout" role="img" aria-label="An example lab value, vitamin D 74 nmol per litre, inside the lab's range of 50 to 125, up from two earlier reports.">
+            <p class="label">Vitamin D</p>
+            <p class="value">74<small>nmol/l</small></p>
+            <div class="range"><span class="track"></span><span class="band"></span><span class="was w1"></span><span class="was w2"></span><span class="now"></span></div>
+            <p class="range-scale"><span>Lab range 50</span><span>125</span></p>
+            <p class="then">Rings are your earlier reports</p>
+          </div>
+        </li>
+
+        <li class="part">
+          <div>
+            <h3>Insights and HOLOLISA Age</h3>
+            <p>Your own normal for each signal, recovery over ninety days and the habits that went with it.</p>
+            <p>HOLOLISA Age is a research estimate from nine markers on one blood test, using a published equation. It appears only when a report holds all nine, and HOLOLISA never guesses a missing one.</p>
+          </div>
+          <figure class="shot">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/age-dark.webp">
+              <img src="assets/img/screens/age-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The HOLOLISA Age screen: a research estimate beside calendar age, with how it moved between reports.">
+            </picture>
+          </figure>
+        </li>
+
+        <li class="part">
+          <div>
+            <h3>Patterns</h3>
+            <p>What tends to go with your better nights and mornings, found in your own data. For example, how your heart rate variability differs after the nights you were in bed by 22:45.</p>
+          </div>
+          <figure class="shot">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="assets/img/screens/hrv-dark.webp">
+              <img src="assets/img/screens/hrv-light.webp" width="560" height="1211" loading="lazy" decoding="async" alt="The heart rate variability screen: 93 ms, above your usual, eight weeks of readings, and a pattern linking bedtime to the next morning.">
+            </picture>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section privacy" id="privacy" aria-labelledby="privacy-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="privacy-title">Your health data stays on your phone.</h2>
+      </div>
+      <ul class="facts">
+        <li>
+          <h3>Worked out on the phone</h3>
+          <p>HOLOLISA reads Apple Health or Health Connect only with your permission, and does its work on the phone. No health reading, lab value or journal entry is sent anywhere in readable form.</p>
+        </li>
+        <li>
+          <h3>Backup only if you turn it on</h3>
+          <p>Cloud backup is off until you say yes. Then your record is encrypted on the phone before it is uploaded, and kept in Frankfurt, in the EU, so a new phone can restore it.</p>
+          <p class="fine">HOLOLISA's server keeps the key, so that signing in is enough to restore. The policy explains how.</p>
+        </li>
+        <li>
+          <h3>No ads, no tracking</h3>
+          <p>No advertising, no analytics of our own, no tracking SDKs and no advertising ID. This site sets no cookies and loads nothing from anyone else.</p>
+          <p class="fine">On Android, Google's ML Kit, the code behind the scanners, sends its own diagnostics. The policy lists them.</p>
+        </li>
+      </ul>
+      <p><a href="privacy.html">Read the privacy policy</a></p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="not-title">
+    <div class="wrap"><div class="plain">
+      <h2 id="not-title">What HOLOLISA is for</h2>
+      <p>HOLOLISA is for general wellness, for people 16 and over. It does not diagnose anything and does not replace a doctor. A band on a chart is your own usual, a lab value sits against the range your lab printed, and HOLOLISA Age is a research estimate. If you feel unwell, talk to a doctor.</p>
+      <p>HOLOLISA is in early testing.</p>
+      <ul class="soon" aria-label="Availability">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>iPhone <span>coming soon</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Android <span>coming soon</span></li>
+      </ul>
+    </div></div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>HOLOLISA is developed by Kaiser Jonatan. Contact: <a href="mailto:kaiserjonatan911@gmail.com">kaiserjonatan911@gmail.com</a>.</p>
+    <nav aria-label="Legal and help">
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms of use</a></li>
+        <li><a href="delete-account.html">Delete your account</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
