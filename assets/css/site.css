@@ -19,6 +19,9 @@
   /* the ground: backdropLight (sky, mid, dawn) */
   --sky: #EAF0FF;
   --ground: #F4F4FF;
+  /* the mark (#2107): Half light in Refraction's colours, design/tokens.json's brand group */
+  --mark-you: #1A2896;
+  --mark-lit: #4563E6;
   --dawn: #FFF3EA;
   --card: #FFFFFF;
   --card3: #E3E8FD;
@@ -100,6 +103,8 @@
   :root {
     --sky: #22205A;
     --ground: #1D1C48;
+    --mark-you: #FFFFFF;
+    --mark-lit: #9BE9FF;
     --dawn: #191A3C;
     --card: #2C2B60;
     --card3: #32316A;
@@ -203,18 +208,21 @@ a:hover { text-decoration-thickness: 2px; }
   min-height: 76px;
 }
 
+/* the lockup (docs/brand/BRAND.md): the mark, then the word in Geist, holo at 600 and lisa at 300 in the slices' colour */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   min-height: 44px;
-  color: inherit;
+  color: var(--mark-you);
   text-decoration: none;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  font-size: 1.4rem;
+  line-height: 1;
 }
-.brand svg { width: 46px; height: 22px; flex: none; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.brand .brand-lit { font-weight: 300; color: var(--mark-lit); }
 
 .site-nav ul {
   display: flex;
@@ -235,7 +243,7 @@ a:hover { text-decoration-thickness: 2px; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
 @media (max-width: 440px) { .site-nav .wide { display: none; } }
 
-.site-head.on-night { background: var(--night); color: var(--n-ink); }
+.site-head.on-night { background: var(--night); color: var(--n-ink); --mark-you: #FFFFFF; --mark-lit: #9BE9FF; }
 .on-night .site-nav a { color: var(--n-ink2); }
 .on-night .site-nav a:hover { color: var(--n-ink); }
 .on-night :focus-visible { outline-color: var(--n-link); }
@@ -874,7 +882,7 @@ h3 {
 
 .site-foot { border-top: 1px solid var(--line); padding-block: 40px 56px; font-size: var(--t-small); color: var(--ink3); }
 .foot-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; }
-.site-foot .brand { color: var(--ink); }
+.site-foot .brand { color: var(--mark-you); }
 .site-foot ul { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; margin: 0; padding: 0; }
 .site-foot ul a { display: inline-block; padding: 10px 0; color: var(--ink2); }
 
